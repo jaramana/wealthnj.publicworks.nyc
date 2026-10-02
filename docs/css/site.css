@@ -1418,6 +1418,24 @@ summary {
   gap: 16px;
   font-size: 0.7rem;
 }
+.map-page .atlas-foot .map-credits {
+  margin-left: 12px;
+}
+.map-page .portfolio-mark {
+  margin-left: auto;
+  white-space: nowrap;
+  letter-spacing: 0.02em;
+  color: var(--ink-faint);
+}
+.map-page .portfolio-mark a {
+  color: var(--ink-soft);
+  font-weight: 600;
+  text-decoration: none;
+}
+.map-page .portfolio-mark a:hover {
+  color: var(--accent);
+  text-decoration: underline;
+}
 .map-heading,
 .map-help {
   color: #304b3b;
