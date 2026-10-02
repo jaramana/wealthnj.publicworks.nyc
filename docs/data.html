@@ -1,0 +1,484 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <link rel="canonical" href="https://wealthnj.publicworks.nyc/data.html" />
+    <meta property="og:url" content="https://wealthnj.publicworks.nyc/data.html" />
+    <meta property="og:title" content="Data · Wealth NJ" />
+    <meta property="og:type" content="website" />
+    <title>Data · Wealth NJ</title>
+    <meta
+      name="description"
+      content="Download the files behind Wealth NJ and see how they are made."
+    />
+    <link rel="stylesheet" href="css/site.css?v=20261002" />
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+    <header class="masthead" data-chrome="masthead"></header>
+    <main id="main" class="document wrap">
+      <h1>Data</h1>
+      <p class="lead">
+        Two ways to count income. Here’s how the numbers become the map.
+      </p>
+
+      <section id="process">
+        <h2 id="method">Process</h2>
+        <p>
+          Both maps show average annual income per household for 2018–2022, in
+          2022 dollars. Each source supplies an area’s income total, and we
+          divide both by the same Census Bureau household count.
+        </p>
+        <div class="method-grid">
+          <article class="method-card">
+            <div class="method-band">
+              <span class="eyebrow">Tax records</span>
+              <h3>IRS</h3>
+            </div>
+            <div class="method-body">
+              <p>
+                Income reported on tax returns: wages, realized capital gains,
+                and other income. We use adjusted gross income (AGI).
+              </p>
+              <ol class="pipeline" aria-label="IRS calculation steps">
+                <li>
+                  <strong>Add income by area</strong
+                  ><span
+                    >Add returns for the matched postal ZIP for each tax year,
+                    2018–2022.</span
+                  >
+                </li>
+                <li>
+                  <strong>Convert to 2022 dollars</strong
+                  ><span>Adjust each year’s total for inflation.</span>
+                </li>
+                <li>
+                  <strong>Find the annual average</strong
+                  ><span>Add the five adjusted totals, then divide by 5.</span>
+                </li>
+                <li>
+                  <strong>Divide by households</strong
+                  ><span>Use the area’s ACS household count.</span>
+                </li>
+              </ol>
+              <div
+                class="equation"
+                role="math"
+                aria-label="IRS income per household equals annual average adjusted gross income divided by ACS households"
+              >
+                <span class="fraction"
+                  ><span>Annual average AGI</span
+                  ><span>ACS households</span></span
+                >
+                <span>=</span><strong>IRS income<br />per household</strong>
+              </div>
+            </div>
+          </article>
+          <article class="method-card">
+            <div class="method-band">
+              <span class="eyebrow">Household survey</span>
+              <h3>Census Bureau</h3>
+            </div>
+            <div class="method-body">
+              <p>
+                The American Community Survey (ACS) counts wages, interest,
+                dividends, and other money income. It excludes capital gains.
+              </p>
+              <ol class="pipeline" aria-label="Census Bureau calculation steps">
+                <li>
+                  <strong>Use the five-year estimate</strong
+                  ><span
+                    >ACS 2018–2022 estimates are already in 2022 dollars.</span
+                  >
+                </li>
+                <li>
+                  <strong>Add income by area</strong
+                  ><span
+                    >Use aggregate household income from the matched Census ZIP
+                    area (ZCTA).</span
+                  >
+                </li>
+                <li>
+                  <strong>Add household counts</strong
+                  ><span>Use counts from the same ZCTA.</span>
+                </li>
+                <li>
+                  <strong>Divide income by households</strong
+                  ><span>This gives the mean, rather than the median.</span>
+                </li>
+              </ol>
+              <div
+                class="equation"
+                role="math"
+                aria-label="Census Bureau income per household equals ACS aggregate household income divided by ACS households"
+              >
+                <span class="fraction"
+                  ><span>ACS aggregate income</span
+                  ><span>ACS households</span></span
+                >
+                <span>=</span><strong>Census income<br />per household</strong>
+              </div>
+            </div>
+          </article>
+        </div>
+        <p class="method-note">
+          ACS estimates are already annual and in 2022 dollars. No extra
+          division by 5 or inflation adjustment.
+        </p>
+        <p>
+          Same household count; different income definitions and coverage. We do
+          not match individual tax returns to households or treat the gap as an
+          exact amount of missing income.
+        </p>
+      </section>
+
+      <section id="downloads">
+        <h2>Downloads</h2>
+        <div class="downloads">
+          <a class="download" href="data/wealth-nj-zip.csv" download>
+            <h3>CSV</h3>
+            <p>All areas and all fields, ready for a spreadsheet.</p>
+          </a>
+          <a class="download" href="data/wealth-nj-zip.geojson" download>
+            <h3>GeoJSON</h3>
+            <p>The same data with map boundaries.</p>
+          </a>
+          <a class="download" href="data/meta.json" download>
+            <h3>Metadata</h3>
+            <p>Field definitions, years and pull dates, as JSON.</p>
+          </a>
+        </div>
+        <details class="columns">
+          <summary>Columns</summary>
+          <p>
+            Blank cells mean unavailable or withheld. All fields are included in
+            the CSV and GeoJSON, and only two are offered as map layers. Older
+            per-return IRS dollar fields remain nominal unless their names end in
+            <code>_2022</code>.
+          </p>
+          <div
+            class="table-wrap field-guide"
+            tabindex="0"
+            role="region"
+            aria-label="Scrollable field definitions"
+          >
+            <table>
+              <thead>
+                <tr>
+                  <th scope="col">Field</th>
+                  <th scope="col">Definition</th>
+                  <th scope="col">Unit / source</th>
+                </tr>
+              </thead>
+              <tbody id="field-rows"></tbody>
+            </table>
+          </div>
+          
+          <p>
+            The downloads also retain Census medians, margins of error,
+            high-income-return statistics and nominal IRS per-return fields.
+            They are not additional map layers. Census medians and their margins
+            of error describe each mapped ZCTA.
+          </p>
+
+          <p>
+            Partnership and S-corporation income may combine income from work
+            and ownership. It remains in the downloads and is excluded from our
+            investment subtotal.
+          </p>
+        </details>
+        <p id="data-vintage" class="data-note">
+          Source dates are recorded in the metadata download.
+        </p>
+        <p class="data-note">
+          Free to reuse with attribution. Include the measure, unit, years,
+          geography, publisher and Wealth NJ’s method, and do not label these
+          income measures as net worth.
+          <span id="citation"
+            >Suggested citation: Wealth NJ, annual income per household, IRS and
+            Census Bureau, 2018–2022, in 2022 dollars, mapped to 2020 Census
+            ZCTAs. Source pull dates are in the metadata download.</span
+          >
+        </p>
+      </section>
+
+      <section id="sources">
+        <h2>Sources</h2>
+        <p>
+          “Pulled” is when we downloaded the source, not the period it measures.
+          Metadata includes dates for individual files. Boundary and relationship files identify the mapped areas.
+        </p>
+        <p id="coverage-note"></p>
+        <div id="source-list" class="source-list"></div>
+      </section>
+
+
+      <section id="notes">
+        <h2>Notes</h2>
+        <details class="technical-method">
+          <summary>Exact fields and inflation formula</summary>
+          <p>
+            AGI is income after certain adjustments, before standard or itemized
+            deductions. For each area, sum IRS field <code>A00100</code> across
+            assigned ZIPs and income brackets for each year. IRS dollar fields
+            are reported in thousands, so multiply by 1,000 first.
+          </p>
+          <div class="formula-line">
+            Adjusted AGI for year y = A00100<sub>y</sub> × 1,000 × (292.655 ÷
+            CPI-U<sub>y</sub>)
+          </div>
+          <div class="formula-line">
+            IRS income / household = (adjusted AGI<sub>2018</sub> + … + adjusted
+            AGI<sub>2022</sub>) ÷ 5 ÷ households
+          </div>
+          <div class="formula-line">
+            Census income / household = Σ B19025 income ÷ Σ B19001 households
+          </div>
+          <p>
+            Σ means “add across the ZCTAs assigned to the area.” We use the
+            total estimate in each ACS table.
+          </p>
+          <dl class="cpi-indexes">
+            <div>
+              <dt>2018</dt>
+              <dd>251.107</dd>
+            </div>
+            <div>
+              <dt>2019</dt>
+              <dd>255.657</dd>
+            </div>
+            <div>
+              <dt>2020</dt>
+              <dd>258.811</dd>
+            </div>
+            <div>
+              <dt>2021</dt>
+              <dd>270.970</dd>
+            </div>
+            <div>
+              <dt>2022</dt>
+              <dd>292.655</dd>
+            </div>
+          </dl>
+          <p class="fine">
+            BLS all-items CPI-U, U.S. city average, annual averages, not
+            seasonally adjusted; series CUUR0000SA0.
+            <a
+              href="https://www.bls.gov/regions/mid-atlantic/data/consumerpriceindexannualandsemiannual_table.htm"
+              >BLS annual CPI indexes</a
+            >, verified September 29, 2026. Census retains its own published
+            inflation adjustment.
+          </p>
+        </details>
+        
+        <details class="investment-method">
+          <summary>Investment income and shares</summary>
+          <p>
+            We add three IRS amounts: taxable interest, ordinary dividends, and
+            net capital gains. We adjust each year for inflation, then average
+            the five years, just as we do for AGI.
+          </p>
+          <div class="formula-line investment-formula">
+            Investment income = taxable interest + ordinary dividends + net
+            capital gains
+          </div>
+          <div class="share-equations">
+            <div>
+              <h4>From investments</h4>
+              <div
+                class="equation"
+                role="math"
+                aria-label="Investment share equals area investment income divided by area AGI, multiplied by 100 percent"
+              >
+                <span class="fraction"
+                  ><span>Area investment income</span
+                  ><span>Area AGI</span></span
+                ><span>× 100%</span>
+              </div>
+              <p>
+                The share of an area’s IRS income that comes from these
+                investments.
+              </p>
+            </div>
+            <div>
+              <h4>Share of NJ investment income</h4>
+              <div
+                class="equation"
+                role="math"
+                aria-label="NJ investment share equals area investment income divided by mapped NJ investment income, multiplied by 100 percent"
+              >
+                <span class="fraction"
+                  ><span>Area investment income</span
+                  ><span>Mapped NJ investment income</span></span
+                ><span>× 100%</span>
+              </div>
+              <p>
+                The area’s contribution to the state total. This uses total
+                dollars, not dollars per household.
+              </p>
+            </div>
+          </div>
+          <p class="fine">
+            IRS fields A00300 + A00600 + A01000. This subtotal excludes
+            tax-exempt interest, rents, royalties, and partnership income. The
+            NJ total includes mapped areas with published IRS figures.
+          </p>
+        </details>
+        
+        <details class="map-method">
+          <summary>From dollars to stacks</summary>
+          <p>
+            Both sources use the same scale. Twice the income means twice the
+            height; $1.2 million per household reaches 8,500 map meters. Zooming
+            does not change that scale. Read height, rather than stack volume:
+            ZIP areas have different land areas.
+          </p>
+          <div class="scale-explainer">
+            <div class="legend-ramp"></div>
+            <div class="legend-labels">
+              <span>$0</span><span>$100k</span><span>$300k</span
+              ><span>$1.2m+</span>
+            </div>
+          </div>
+          <p class="fine">
+            The brightest color covers $1.2 million and above; height continues to rise. These color stops are shared by both maps. Their dollar intervals
+            are unequal. Flat view helps reveal areas behind tall stacks. A
+            selected area turns gold.
+          </p>
+        </details>
+        
+        <details>
+          <summary>How ZIP codes become NJ map areas</summary>
+          <p>We use 2020 Census ZIP Code Tabulation Areas (ZCTAs) whose land lies at least half in New Jersey, based on Census county relationship files. Each ZCTA is matched to the same five-digit IRS postal ZIP within New Jersey. Postal ZIPs and Census ZCTAs differ; this is an area-level match.</p>
+          <p>PO-box and unique postal ZIPs without a ZCTA are excluded. Their income is not redistributed. ZCTAs crossing the state border retain their whole Census estimates and boundaries, while IRS totals contain only New Jersey returns. The downloads record the share of ZCTA land in New Jersey.</p>
+          <p>IRS figures are withheld below 1,000 returns in 2022 or without all five tax years. This publication threshold is our comparison rule, not an IRS confidentiality requirement. It also covers small residential ZIPs. Areas without households have no per-household value; unavailable values are not zero.</p>
+          <p>The principal municipality and county have the largest land overlap with the ZCTA. Search also matches other intersecting NJ municipalities and counties. These are area labels, not municipal or county income estimates. A filing address does not locate a filer’s assets.</p>
+        </details>
+      </section>
+
+      <section id="concentration" class="data-concentration" aria-label="Statewide concentration">
+        <h2>Concentration</h2>
+        <p id="concentration-copy"></p>
+        <details>
+          <summary>How we choose these areas</summary>
+          <p>
+            Rank areas by nominal investment income per tax return, then take
+            the leading group in that ranking whose total reaches at least half of mapped investment
+            income. Both bars describe that same group, using pooled 2018–2022
+            income and returns from areas with published IRS data. This
+            supplementary chart uses original-year dollars; the map uses
+            inflation-adjusted dollars.
+          </p>
+        </details>
+        <figure id="concentration-chart" class="concentration-chart"></figure>
+      </section>
+      
+      <section id="table">
+        <h2>Browse</h2>
+        <p>
+          Compare all <span id="area-count">NJ ZIP</span> areas. Select a ZIP area to see it on the map. Both
+          income columns are annual averages per household, in 2022 dollars.
+        </p>
+        <div class="table-controls">
+          <div>
+            <label for="filter"
+              >Filter by ZIP code, municipality, or county</label
+            ><input id="filter" type="search" placeholder="Try Atlantic City" />
+          </div>
+          <div>
+            <label for="sort">Sort by</label
+            ><select id="sort">
+              <option value="tax">IRS, highest first</option>
+              <option value="census">Census Bureau, highest first</option>
+              <option value="zip">ZIP code</option>
+              <option value="name">Municipality</option>
+            </select>
+          </div>
+        </div>
+        <p id="row-count" role="status" class="fine"></p>
+        <div
+          class="table-wrap"
+          tabindex="0"
+          role="region"
+          aria-label="Scrollable ZIP area data"
+        >
+          <table>
+            <caption class="sr-only">
+              Average annual income per household in 2022 dollars, from the IRS
+              and Census Bureau.
+            </caption>
+            <thead>
+              <tr>
+                <th scope="col">ZIP area / municipality</th>
+                <th scope="col">
+                  IRS<br /><span class="table-period"></span><br />Income /
+                  household
+                </th>
+                <th scope="col">
+                  Census Bureau<br /><span class="table-period"></span
+                  ><br />Income / household
+                </th>
+                <th scope="col">Investment share<br />of IRS income</th>
+              </tr>
+            </thead>
+            <tbody id="rows">
+              <tr>
+                <td colspan="4">Loading data…</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="fine">
+          “Investment share” is taxable interest, ordinary dividends, and net
+          capital gains as a share of IRS income. Blank or unavailable values do
+          not mean zero.
+        </p>
+      </section>
+      
+      <section id="limits">
+        <h2>Limits</h2>
+        <ul class="limits-list">
+          <li>
+            Income is a flow of money, and net worth is assets minus debts. These
+            maps do not measure unsold gains or complete household wealth.
+          </li>
+          <li>
+            Area averages can be pulled up by a few very large incomes. They do
+            not describe a typical household or identify owners.
+          </li>
+          <li>
+            Nonfilers and income missing from returns are outside the IRS
+            totals. Survey estimates have sampling error; the downloads include 90% margins for household counts and aggregate income. Small denominators can make averages unstable. The two sources
+            count income differently.
+          </li>
+          <li>
+            These figures cover 2018–2022. Averaging reduces year-to-year swings
+            from asset sales, but it also blends different economic conditions.
+          </li>
+        </ul>
+        <p class="fine">
+          See the Census Bureau’s definitions of
+          <a
+            href="https://www.census.gov/topics/income-poverty/income/about.html"
+            >money income</a
+          >
+          and
+          <a href="https://www.census.gov/topics/income-poverty/wealth.html"
+            >wealth</a
+          >.
+        </p>
+      </section>
+      <noscript
+        ><p>
+          The interactive table needs JavaScript. The downloads and process above
+          remain available.
+        </p></noscript
+      >
+    </main>
+    <footer class="footer" data-chrome="footer"></footer>
+    <script type="module" src="js/data.js?v=20261002"></script>
+  </body>
+</html>

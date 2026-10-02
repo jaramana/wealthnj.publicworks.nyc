@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <link rel="canonical" href="https://wealthnj.publicworks.nyc/about.html" />
+    <meta property="og:url" content="https://wealthnj.publicworks.nyc/about.html" />
+    <meta property="og:title" content="About · Wealth NJ" />
+    <meta property="og:type" content="website" />
+    <title>About · Wealth NJ</title>
+    <meta
+      name="description"
+      content="Why Wealth NJ compares IRS and Census Bureau income."
+    />
+    <link rel="stylesheet" href="css/site.css?v=20261002" />
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+    <header class="masthead" data-chrome="masthead"></header>
+    <main id="main" class="document about wrap">
+      <h1>About</h1>
+      <p class="lead">
+        Wealth NJ compares New Jersey income in tax records and in Census
+        Bureau data.
+      </p>
+      <section>
+        <h2>Why</h2>
+        <p>
+          New Jersey’s income peaks look more extreme through tax records. Switch
+          between the IRS and Census Bureau to see the difference, with the same
+          household counts, years, and dollar scale. Tax records include
+          reported capital gains, one part of income that the Census Bureau’s
+          household survey excludes.
+        </p>
+      </section>
+      <section>
+        <h2>Scope</h2>
+        <p>
+          Both views show averages for ZIP areas. The tax view divides reported
+          income by Census household counts; it does not link returns to
+          households. It does not estimate net worth or identify individual
+          owners. The
+          <a href="data.html">Data page</a> provides the calculations, source
+          dates, limits, and downloads.
+          <a href="https://wealth.publicworks.nyc/">Wealth NYC</a> uses the same comparison for New York City.
+        </p>
+      </section>
+      <section>
+        <h2>Read the map</h2>
+        <p>
+          Taller stacks mean higher annual income per household. Colors brighten up to $1.2 million, then stay at the brightest shade.
+          Select a ZIP area to see both estimates and the role of investment
+          income. Use Flat view to reach areas hidden behind tall stacks.
+        </p>
+      </section>
+      <section>
+        <h2>Built</h2>
+        <p>
+          A static website using MapLibre GL JS, with a Python data pipeline
+          using pandas, requests, and Shapely. The pipeline joins ZIP-area
+          sources, adjusts IRS income for inflation, and exports the map and
+          downloads. The site uses no account system or analytics.
+        </p>
+      </section>
+      <section>
+        <h2>Independence</h2>
+        <p>No agency reviewed this site.</p>
+      </section>
+      <section>
+        <h2>Credits</h2>
+        <p>
+          Data from the IRS, the U.S. Census Bureau, and the Bureau of Labor
+          Statistics. Claude and Codex were used in
+          development.
+        </p>
+      </section>
+      <section>
+        <h2>Reuse</h2>
+        <p>
+          Code is BSD 3-Clause licensed. Compiled data can be reused with
+          attribution; the source data retain their own terms. Include the
+          income measure, years and source when you republish a figure.
+        </p>
+      </section>
+      <section>
+        <h2>Contact</h2>
+        <p>
+          <a href="https://github.com/jaramana/wealthnj.publicworks.nyc/issues"
+            >Report an issue</a
+          >
+          on GitHub. For a data issue, include the ZIP area, measure, and year
+          range.
+        </p>
+      </section>
+    </main>
+    <footer class="footer" data-chrome="footer"></footer>
+    <script type="module">
+      import { chrome } from "./js/common.js?v=20261002";
+      chrome();
+    </script>
+  </body>
+</html>

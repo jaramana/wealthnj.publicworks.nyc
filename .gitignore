@@ -1,0 +1,11 @@
+.venv/
+data-raw/
+build/
+__pycache__/
+.DS_Store
+*.pyc
+
+# Local preview configuration and working notes.
+.claude/
+HANDOFF.md
+PLAN.md

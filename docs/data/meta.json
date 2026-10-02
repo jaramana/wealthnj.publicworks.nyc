@@ -1,0 +1,398 @@
+{
+  "built": "2026-10-02",
+  "years": {
+    "irs": [
+      2018,
+      2019,
+      2020,
+      2021,
+      2022
+    ],
+    "acs": [
+      2018,
+      2022
+    ]
+  },
+  "sources": {
+    "irs": {
+      "publisher": "Internal Revenue Service, Statistics of Income",
+      "title": "Individual Income Tax Statistics, ZIP Code Data",
+      "page": "https://www.irs.gov/statistics/soi-tax-stats-individual-income-tax-statistics-zip-code-data-soi",
+      "covers": "Tax years 2018-2022",
+      "pulled": "2026-10-02"
+    },
+    "acs": {
+      "publisher": "U.S. Census Bureau",
+      "title": "American Community Survey 5-year estimates, 2018-2022",
+      "page": "https://www.census.gov/programs-surveys/acs/data/summary-file.html",
+      "covers": "Survey years 2018-2022",
+      "pulled": "2026-10-02"
+    },
+    "zcta": {
+      "publisher": "U.S. Census Bureau",
+      "title": "2020 ZIP Code Tabulation Areas, ACS 2022 boundary service",
+      "page": "https://tigerweb.geo.census.gov/arcgis/rest/services/TIGERweb/tigerWMS_ACS2022/MapServer/0",
+      "covers": "2020 ZCTAs, January 2022 boundary vintage",
+      "pulled": "2026-10-02"
+    },
+    "relationships": {
+      "publisher": "U.S. Census Bureau",
+      "title": "2020 ZCTA to County and County Subdivision Relationships",
+      "page": "https://www.census.gov/geographies/reference-files/2020/geo/relationship-files.html",
+      "covers": "2020 geography",
+      "pulled": "2026-10-02"
+    }
+  },
+  "fields": [
+    {
+      "column": "irs_share_of_state_investment_2022",
+      "label": "Share of NJ investment income",
+      "unit": "share",
+      "source": "irs",
+      "note": "Share of inflation-adjusted annual investment income in all mapped areas with published IRS figures. Same 2018\u20132022 years and 2022 dollars as the panel."
+    },
+    {
+      "column": "irs_income_per_household_2022",
+      "label": "Tax records: annual income per household",
+      "unit": "dollars",
+      "source": "irs",
+      "note": "Annual average AGI, adjusted year by year to 2022 dollars using BLS CPI-U, divided by ACS households in the same mapped area. Combined-source estimate; returns are not linked to households."
+    },
+    {
+      "column": "irs_agi_annual_2022",
+      "label": "Annual average AGI, 2022 dollars",
+      "unit": "dollars",
+      "source": "irs",
+      "note": "Sum of each year's AGI multiplied by CPI-U 2022 / CPI-U year, divided by five years."
+    },
+    {
+      "column": "irs_investment_annual_2022",
+      "label": "Annual average investment income, 2022 dollars",
+      "unit": "dollars",
+      "source": "irs",
+      "note": "Taxable interest, ordinary dividends and net capital gains; each year adjusted using CPI-U, then averaged."
+    },
+    {
+      "column": "irs_investment_share_2022",
+      "label": "Investment share of reported income",
+      "unit": "share",
+      "source": "irs",
+      "note": "Inflation-adjusted investment income divided by inflation-adjusted AGI across 2018\u20132022."
+    },
+    {
+      "column": "irs_returns_annual",
+      "label": "Annual average tax returns",
+      "unit": "count",
+      "source": "irs",
+      "note": "Sum of returns for 2018\u20132022 divided by five. Not unique filers."
+    },
+    {
+      "column": "irs_returns",
+      "label": "Tax returns",
+      "unit": "count",
+      "source": "irs",
+      "note": "Returns filed for the latest tax year. Rounded to 10 by the IRS."
+    },
+    {
+      "column": "irs_agi_per_return",
+      "label": "Adjusted gross income per return",
+      "unit": "dollars",
+      "source": "irs",
+      "note": "Five tax years pooled. Legacy research field in nominal dollars; not the household-normalized map measure."
+    },
+    {
+      "column": "irs_wages_per_return",
+      "label": "Wages per return",
+      "unit": "dollars",
+      "source": "irs",
+      "note": "Five tax years pooled."
+    },
+    {
+      "column": "irs_capital_income_per_return",
+      "label": "Investment income per tax return",
+      "unit": "dollars",
+      "source": "irs",
+      "note": "Taxable interest, ordinary dividends and net capital gains. Five tax years pooled."
+    },
+    {
+      "column": "irs_investment_income_annual",
+      "label": "Investment income, annual average total",
+      "unit": "dollars",
+      "source": "irs",
+      "note": "Sum of taxable interest, ordinary dividends and net capital gains across all mapped returns, divided by the number of tax years."
+    },
+    {
+      "column": "irs_capital_gains_per_return",
+      "label": "Net capital gains per return",
+      "unit": "dollars",
+      "source": "irs",
+      "note": "Five tax years pooled."
+    },
+    {
+      "column": "irs_partnership_per_return",
+      "label": "Partnership and S-corp income per return",
+      "unit": "dollars",
+      "source": "irs",
+      "note": "Five tax years pooled."
+    },
+    {
+      "column": "irs_capital_share_of_agi",
+      "label": "Investment income share of AGI",
+      "unit": "share",
+      "source": "irs",
+      "note": "Five tax years pooled."
+    },
+    {
+      "column": "irs_top_share_of_returns",
+      "label": "Returns with AGI of $200,000 or more",
+      "unit": "share",
+      "source": "irs",
+      "note": "Five tax years pooled."
+    },
+    {
+      "column": "irs_top_agi_per_return",
+      "label": "Average AGI of returns at $200,000 or more",
+      "unit": "dollars",
+      "source": "irs",
+      "note": "Five tax years pooled. Blank where the IRS suppressed the class."
+    },
+    {
+      "column": "irs_top_share_of_agi",
+      "label": "Share of AGI on returns at $200,000 or more",
+      "unit": "share",
+      "source": "irs",
+      "note": "Five tax years pooled."
+    },
+    {
+      "column": "irs_share_of_state_capital_income",
+      "label": "Share of mapped investment income",
+      "unit": "share",
+      "source": "irs",
+      "note": "Five tax years pooled."
+    },
+    {
+      "column": "irs_share_of_state_returns",
+      "label": "Share of mapped tax returns",
+      "unit": "share",
+      "source": "irs",
+      "note": "Five tax years pooled."
+    },
+    {
+      "column": "acs_population",
+      "label": "Population",
+      "unit": "count",
+      "source": "acs",
+      "note": ""
+    },
+    {
+      "column": "acs_households",
+      "label": "Households",
+      "unit": "count",
+      "source": "acs",
+      "note": ""
+    },
+    {
+      "column": "acs_median_household_income",
+      "label": "Median household income",
+      "unit": "dollars",
+      "source": "acs",
+      "note": "Mapped ZCTA median. In 2022 dollars. The Census reports 250,001 for any median above $250,000."
+    },
+    {
+      "column": "acs_median_household_income_moe",
+      "label": "Household income margin of error",
+      "unit": "dollars",
+      "source": "acs",
+      "note": "90% confidence margin for the median, from the mapped ZCTA. In 2022 dollars. Blank when unavailable or top-coded."
+    },
+    {
+      "column": "acs_mean_household_income",
+      "label": "Census: average household income",
+      "unit": "dollars",
+      "source": "acs",
+      "note": "ACS B19025 aggregate household income divided by B19001 households, summed over the assigned ZCTAs. Published in 2022 dollars; not adjusted again. Excludes capital gains."
+    },
+    {
+      "column": "acs_share_households_200k",
+      "label": "Households with income of $200,000 or more",
+      "unit": "share",
+      "source": "acs",
+      "note": "Highest category in ACS table B19001. It has no upper edge."
+    },
+    {
+      "column": "acs_renter_share",
+      "label": "Households that rent",
+      "unit": "share",
+      "source": "acs",
+      "note": ""
+    },
+    {
+      "column": "acs_median_gross_rent",
+      "label": "Median gross rent",
+      "unit": "dollars",
+      "source": "acs",
+      "note": "Monthly rent plus utilities. The Census reports 3,501 for any median above $3,500."
+    },
+    {
+      "column": "acs_private_share_k12",
+      "label": "K-12 students in private school",
+      "unit": "share",
+      "source": "acs",
+      "note": "Private includes religious schools. Charter schools count as public."
+    },
+    {
+      "column": "acs_seasonal_units",
+      "label": "Homes held for occasional use",
+      "unit": "count",
+      "source": "acs",
+      "note": "Vacant units for seasonal, recreational or occasional use."
+    },
+    {
+      "column": "acs_seasonal_share_of_units",
+      "label": "Share of homes held for occasional use",
+      "unit": "share",
+      "source": "acs",
+      "note": ""
+    },
+    {
+      "column": "irs_years_available",
+      "label": "Tax years available",
+      "unit": "count",
+      "source": "irs",
+      "note": "Number of tax years matched. IRS measures require all five years and at least 1,000 latest-year returns."
+    },
+    {
+      "column": "acs_households_moe",
+      "label": "Households margin of error",
+      "unit": "count",
+      "source": "acs",
+      "note": "90% confidence margin. Combined-area margins use the square root of summed squared ZCTA margins; this approximation ignores covariance."
+    },
+    {
+      "column": "acs_aggregate_income_moe",
+      "label": "Aggregate household income margin of error",
+      "unit": "dollars",
+      "source": "acs",
+      "note": "90% confidence margin in 2022 dollars. Combined-area approximation ignores covariance. The map mean has uncertainty in both its numerator and denominator."
+    },
+    {
+      "column": "zip",
+      "label": "ZIP area",
+      "unit": "text",
+      "source": "zcta",
+      "note": "2020 Census ZCTA code; matched to the same five-digit IRS postal ZIP in New Jersey."
+    },
+    {
+      "column": "name",
+      "label": "Principal municipality",
+      "unit": "text",
+      "source": "relationships",
+      "note": "NJ municipality with the largest land overlap. It is a label, not a municipal income estimate."
+    },
+    {
+      "column": "county",
+      "label": "Principal county",
+      "unit": "text",
+      "source": "relationships",
+      "note": "NJ county with the largest land overlap."
+    },
+    {
+      "column": "zips_included",
+      "label": "Matched postal ZIP",
+      "unit": "text",
+      "source": "zcta",
+      "note": "Same-code match only. PO-box and unique ZIPs without a ZCTA are excluded; no redistribution."
+    },
+    {
+      "column": "counties",
+      "label": "Intersecting NJ counties",
+      "unit": "text",
+      "source": "relationships",
+      "note": "NJ counties with positive land overlap."
+    },
+    {
+      "column": "municipalities",
+      "label": "Intersecting NJ municipalities",
+      "unit": "text",
+      "source": "relationships",
+      "note": "NJ municipalities with positive land overlap; useful for search."
+    },
+    {
+      "column": "nj_land_share",
+      "label": "Share of ZCTA land in NJ",
+      "unit": "share",
+      "source": "relationships",
+      "note": "Included when at least half the ZCTA land is in NJ. ACS covers the whole ZCTA; IRS covers NJ-filed returns. Border areas may differ."
+    }
+  ],
+  "region": {
+    "areas": 598,
+    "gains_low_year": 2019,
+    "gains_low": 19990002000,
+    "gains_high_year": 2021,
+    "gains_high": 49571861000,
+    "top_bracket_highest_zip": "07931",
+    "top_areas": 79,
+    "top_capital_share": 0.5004,
+    "top_returns_share": 0.1074,
+    "bottom_areas": 251,
+    "bottom_half_capital_share": 0.1285,
+    "bottom_half_returns_share": 0.5637,
+    "median_topcoded_areas": 3
+  },
+  "comparison": {
+    "dollar_year": 2022,
+    "irs_formula": "sum(AGI_year * CPI_2022 / CPI_year) / 5 / ACS_households",
+    "census_formula": "ACS_B19025_E001 / ACS_B19001_E001",
+    "inflation": {
+      "series": "CUUR0000SA0",
+      "name": "CPI-U, U.S. city average, all items, annual averages",
+      "annual_indexes": {
+        "2018": 251.107,
+        "2019": 255.657,
+        "2020": 258.811,
+        "2021": 270.97,
+        "2022": 292.655
+      },
+      "source": "https://www.bls.gov/regions/mid-atlantic/data/consumerpriceindexannualandsemiannual_table.htm",
+      "verified": "2026-09-29"
+    },
+    "note": "Both map layers use ACS household counts and 2022 dollars. IRS is a combined-source estimate, not linked household returns. Definitions and coverage differ; their difference is not a measure of missing income or wealth.",
+    "legacy_fields": "Other IRS dollar fields and original concentration shares remain nominal unless their names end in _2022."
+  },
+  "source_files": {
+    "irs_2018_nj.csv": "2026-10-02",
+    "irs_2019_nj.csv": "2026-10-02",
+    "irs_2020_nj.csv": "2026-10-02",
+    "irs_2021_nj.csv": "2026-10-02",
+    "irs_2022_nj.csv": "2026-10-02",
+    "acs_2022_b01003_nj.dat": "2026-10-02",
+    "acs_2022_b19001_nj.dat": "2026-10-02",
+    "acs_2022_b19013_nj.dat": "2026-10-02",
+    "acs_2022_b19025_nj.dat": "2026-10-02",
+    "acs_2022_b25002_nj.dat": "2026-10-02",
+    "acs_2022_b25004_nj.dat": "2026-10-02",
+    "acs_2022_b14002_nj.dat": "2026-10-02",
+    "acs_2022_b25003_nj.dat": "2026-10-02",
+    "acs_2022_b25064_nj.dat": "2026-10-02",
+    "zcta_county.txt": "2026-10-02",
+    "zcta_cousub.txt": "2026-10-02",
+    "zcta.geojson": "2026-10-02"
+  },
+  "pull_date_note": "Source-level dates show the most recent successful file download; source_files records individual file dates. Original cache dates are inherited from its source-family record.",
+  "coverage": {
+    "unit": "2020 Census ZCTA, majority NJ land",
+    "min_returns": 1000,
+    "excluded_zctas": [],
+    "irs_published_areas": 503,
+    "note": "Regional shares refer to mapped areas with published figures, not all residents or returns. Same-code postal ZIP/ZCTA match. Census covers whole ZCTAs, IRS only NJ returns. PO-box/unique ZIPs without polygons are not redistributed.",
+    "acs_available_areas": 572,
+    "zero_household_areas": 11,
+    "latest_irs": {
+      "year": 2022,
+      "published_share_of_state_returns": 0.990884966971667,
+      "published_share_of_state_agi": 0.9885390696741264,
+      "note": "Coverage of published mapped ZIPs against the official NJ state-total row (00000). A single tax year in nominal dollars, distinct from the five-year map and concentration chart."
+    }
+  }
+}
