@@ -584,7 +584,8 @@ input::placeholder {
   gap: 1.5rem;
   grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr));
 }
-.footer h4 {
+/* Column titles are h2 for the outline and look like small labels. */
+.footer .footer-head {
   font-size: 0.75rem;
   text-transform: uppercase;
   letter-spacing: 0.09em;
@@ -677,13 +678,6 @@ input::placeholder {
 .document p {
   line-height: 1.7;
 }
-.jump-links {
-  display: flex;
-  gap: 22px;
-  flex-wrap: wrap;
-  font-size: 0.9rem;
-  padding-block: 12px 20px;
-}
 .downloads {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -774,6 +768,12 @@ td small {
 }
 .source-list h3 {
   margin-top: 0;
+}
+/* WCAG 2.5.8 asks for 24 by 24 pixels. This grows the hit area of a
+   source title link, not its type. */
+.source-list h3 a {
+  display: inline-block;
+  padding-block: 3px;
 }
 .source-list p {
   font-size: 0.85rem;
@@ -1779,10 +1779,6 @@ select {
   font-size: 1.7rem;
   line-height: 1.25;
 }
-.jump-links {
-  gap: 8px 22px;
-  border-bottom: 2px solid var(--ink);
-}
 .download {
   border: 1.5px solid var(--ink);
   border-radius: 2px;
@@ -1935,7 +1931,7 @@ select {
 .share-equations > div {
   min-width: 0;
 }
-.share-equations h4 {
+.share-equations h3 {
   margin: 0 0 10px;
 }
 .share-equations .equation {
@@ -2658,4 +2654,25 @@ select {
   height: 8px;
   background: #466059;
   border: 1px solid #becfbd;
+}
+
+/* Stable first paint. The masthead and the phone search slot are filled by
+   script. Until they are, each holds the height it will have, so the map and
+   the page below do not jump when they fill. */
+header[data-chrome="masthead"]:empty {
+  display: block;
+  min-height: 57.95px;
+}
+@media (max-width: 360px) {
+  header[data-chrome="masthead"]:empty {
+    min-height: 53.16px;
+  }
+}
+@media (max-width: 720px) {
+  .map-page header[data-chrome="masthead"]:empty {
+    min-height: 48px;
+  }
+  .map-page #mobile-search-slot:empty {
+    min-height: 117px;
+  }
 }

@@ -13,7 +13,7 @@ import {
   chrome,
   site,
   areaSearchText,
-} from "./common.js?v=20261002";
+} from "./common.js?v=20261009";
 chrome();
 const params = new URLSearchParams(location.hash.slice(1));
 const state = {

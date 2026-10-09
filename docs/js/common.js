@@ -88,12 +88,12 @@ export function chrome() {
         .map(([href, label]) => `<li><a href="${href}">${label}</a></li>`)
         .join("");
     footer.className = "footer";
-    footer.innerHTML = `<div class="wrap"><div class="footer-grid"><div><h4>Views</h4><ul>${links([["index.html", "Map"]])}</ul></div><div><h4>Reference</h4><ul>${links(
+    footer.innerHTML = `<div class="wrap"><div class="footer-grid"><div><h2 class="footer-head">Views</h2><ul>${links([["index.html", "Map"]])}</ul></div><div><h2 class="footer-head">Reference</h2><ul>${links(
       [
         ["data.html", "Data"],
         ["about.html", "About"],
       ],
-    )}</ul></div><div><h4>Project</h4><ul>${links([
+    )}</ul></div><div><h2 class="footer-head">Project</h2><ul>${links([
       [site.repository, "Source code"],
       [
         `${site.repository}/issues`,
