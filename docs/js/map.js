@@ -13,7 +13,7 @@ import {
   chrome,
   site,
   areaSearchText,
-} from "./common.js?v=20261009";
+} from "./common.js?v=20261009b";
 chrome();
 const params = new URLSearchParams(location.hash.slice(1));
 const state = {
@@ -444,7 +444,7 @@ function showMapError() {
 async function init() {
   try {
     [data, meta] = await Promise.all([
-      loadJSON(`data/${site.dataStem}.geojson`),
+      loadJSON(`data/${site.dataStem}-map.geojson`),
       loadJSON("data/meta.json"),
     ]);
     rows = new Map(data.features.map((f) => [f.properties.zip, f.properties]));

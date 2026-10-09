@@ -77,7 +77,9 @@ national. Boundaries are fetched in bounded batches with complete-code checks.
 Caches and build intermediates are ignored. To refresh, verify releases, update
 `pipeline/00_config.py` and run `.venv/bin/python run.py --force-fetch`.
 Rebuilds preserve source pull dates. Checks run before export, including with
-`--stage 4`.
+`--stage 4`. Export also writes `wealth-nj-zip-map.geojson`, the same shapes
+with only the fields the map reads, so the map loads sooner. The full GeoJSON is
+the download.
 
 Preview the static website:
 

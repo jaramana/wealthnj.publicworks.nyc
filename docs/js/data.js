@@ -10,7 +10,7 @@ import {
   site,
   areaSearchText,
   fullDate,
-} from "./common.js?v=20261009";
+} from "./common.js?v=20261009b";
 chrome();
 let rows = [];
 function render() {

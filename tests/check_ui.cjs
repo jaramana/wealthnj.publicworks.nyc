@@ -254,6 +254,7 @@ fs.mkdirSync(output, { recursive: true });
     for (const file of [
       `${site.dataStem}.csv`,
       `${site.dataStem}.geojson`,
+      `${site.dataStem}-map.geojson`,
       "meta.json",
     ])
       assert.equal(

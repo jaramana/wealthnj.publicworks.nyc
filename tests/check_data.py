@@ -13,6 +13,13 @@ rows = list(csv.DictReader((DATA / (site['dataStem'] + '.csv')).open()))
 meta = json.loads((DATA / 'meta.json').read_text())
 features = json.loads((DATA / (site['dataStem'] + '.geojson')).read_text())['features']
 assert len(rows) == len(features) == meta['region']['areas']
+
+# The map file has the same areas and shapes, with a subset of the fields.
+
+mapped = json.loads((DATA / (site['dataStem'] + '-map.geojson')).read_text())['features']
+assert [m['geometry'] for m in mapped] == [f['geometry'] for f in features], 'Map file shapes differ'
+assert all(m['properties'].items() <= f['properties'].items() for m, f in zip(mapped, features)), 'Map file values differ'
+assert all({'zip', 'name', site['groupField'], site['shareField']} <= m['properties'].keys() for m in mapped), 'Map file lacks a field'
 lookup = {}
 for r in rows:
     assert len(r['zip']) == 5 and r['zip'].isdigit()

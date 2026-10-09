@@ -2,6 +2,7 @@
 
     docs/data/wealth-nyc-zip.csv       one row per ZIP area
     docs/data/wealth-nyc-zip.geojson   the same rows with simplified shapes
+    docs/data/wealth-nyc-zip-map.geojson  the same shapes with only the fields the map reads
     docs/data/meta.json                sources, pull dates, fields, regional figures
 """
 
@@ -17,6 +18,16 @@ cfg = sys.modules["00_config"]
 
 SIMPLIFY = 0.00012             # degrees, about 12 meters
 PRECISION = 5                  # decimal places, about 1 meter
+
+# The map file carries only the fields docs/js/map.js reads. A field missing
+# from a region is skipped.
+
+MAP_FIELDS = {
+    "zip", "name", "borough", "county", "zips_included", "counties", "municipalities",
+    "nj_land_share", "acs_households", "acs_mean_household_income",
+    "irs_income_per_household_2022", "irs_investment_share_2022", "irs_investment_annual_2022",
+    "irs_share_of_city_investment_2022", "irs_share_of_state_investment_2022",
+}
 
 # Field order here is column order in the downloads.
 # Each entry: column, label, unit, source, note.
@@ -134,6 +145,13 @@ def rounded(v, unit):
     return v
 
 
+def write_map_file(features):
+    slim = [{**f, "properties": {k: v for k, v in f["properties"].items() if k in MAP_FIELDS}} for f in features]
+    (cfg.SITE_DATA / f"{cfg.DATA_STEM}-map.geojson").write_text(
+        json.dumps({"type": "FeatureCollection", "features": slim}, separators=(",", ":"))
+    )
+
+
 def run():
     t = pd.read_csv(cfg.BUILD / "zips.csv", dtype={"zip": str, "zips_included": str})
     shapes = json.loads((cfg.BUILD / "shapes.json").read_text())
@@ -172,6 +190,7 @@ def run():
     (cfg.SITE_DATA / f"{cfg.DATA_STEM}.geojson").write_text(
         json.dumps({"type": "FeatureCollection", "features": features}, separators=(",", ":"))
     )
+    write_map_file(features)
 
     pulled = json.loads((cfg.RAW / "pulled.json").read_text())
     meta = {
@@ -215,5 +234,5 @@ def run():
         }
     (cfg.SITE_DATA / "meta.json").write_text(json.dumps(meta, indent=2))
 
-    size = (cfg.SITE_DATA / f"{cfg.DATA_STEM}.geojson").stat().st_size / 1e6
+    size = (cfg.SITE_DATA / f"{cfg.DATA_STEM}-map.geojson").stat().st_size / 1e6
     print(f"  {len(out)} rows; map file {size:.1f} MB")
